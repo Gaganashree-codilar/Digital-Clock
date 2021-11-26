@@ -1,0 +1,63 @@
+@font-face {
+    font-family: "digital";
+    src: url("digital-7.ttf");
+}
+body{
+    background-color: black;
+    color: aquamarine;  
+    text-shadow: 0 0 1px #fff, 0 0 1px #fff,0 0 26px #063986, 0 0 36px #063986, 0 0 46px #063986,0 0 56px #063986,0 0 66px #063986;
+}
+.day{
+    font-family:"digital";
+    font-size: 67px;
+    position: absolute;
+    left: 457px;
+    top: 173px;
+}
+.battery{
+    font-family:"digital";
+    font-size: 67px;
+    position: absolute;
+    top: 174px;
+    right: 450px;
+}
+.clock{
+    font-family:"digital";
+    font-size: 202px;
+    text-align: center;
+    padding-top: 240px;
+    padding-bottom: 40px;
+}
+.date{
+    font-family:"digital";
+    font-size: 56px;
+    text-align: center;
+    padding-top: 40px;
+}
+.unit{
+    font-family:"digital";
+    font-size: 30px;
+    position: fixed;
+    top: 261px;
+    right: 354px;
+}
+.second{
+    font-family:"digital";
+    font-size: 30px;
+    position: fixed;
+    top: 362px;
+    right: 354px;
+}
+.timeZone {
+    font-family: 'Times New Roman', Times, serif;
+    background-color: black;
+    color:blue;
+    text-shadow: 0 0 1px #fff, 0 0 1px #fff,0 0 26px #063986, 0 0 36px #063986, 0 0 46px #063986,0 0 56px #063986,0 0 66px #063986;
+    font-size: 22pt;
+    position: absolute;
+    background-color: black;
+    border-radius: 10px 10px;
+    top: 10pt;
+    right: 0;
+    left: 10pt;
+}

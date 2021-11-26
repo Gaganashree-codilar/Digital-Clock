@@ -1,0 +1,72 @@
+<html>
+
+<head>
+    <link rel="stylesheet" type="text/css" media="all" href="clock.css" />
+</head>
+
+<body>
+    <form name=form class="form">
+        <select name="timeZone" class="timeZone"></select>
+    </form>
+    <div>
+        <div id="day" class="day"></div>
+        <div id="battery" class="battery"></div>
+        <div id="clock" class="clock"></div>
+        <div id="unit" class="unit"></div>
+        <div id="second" class="second"></div>
+        <div id="date" class="date"></div>
+    </div>
+    <script type="text/javascript">
+        setInterval(calctime, 1000);
+        setInterval(() => {
+            navigator.getBattery().then(function (battery) {
+                let level = parseInt(battery.level * 100) + " % ";
+                document.getElementById("battery").innerText = level;
+            });
+        }, 1000);
+
+        mylist = [
+            'Asia/Kolkata',
+            'Asia/Bangkok',
+            'Asia/Dubai',
+            'Asia/Tokyo',
+            'Europe/Athens',
+            'Europe/Jersey',
+            'Europe/London',
+            'Europe/Monaco',
+        ]
+
+        for (i = 0; i < mylist.length; i++) {
+            addOption(document.form.timeZone, mylist[i], mylist[i])
+        }
+
+        function addOption(selectbox, text, value) {
+            let optn = document.createElement("OPTION")
+            optn.text = text
+            optn.value = value
+            selectbox.options.add(optn)
+        }
+
+        function calctime() {
+            let tzone = form.timeZone.options[form.timeZone.options.selectedIndex].value;
+            let date = new Date();
+            let h = date.toLocaleString('en-US', { hour: "2-digit", timeZone: tzone });
+            let m = date.toLocaleString('en-US', { minute: "2-digit", timeZone: tzone });
+            let sec = date.toLocaleString('en-US', { second: "2-digit", timeZone: tzone });
+            let mm = date.toLocaleString('en-US', { month: "long", timeZone: tzone });
+            let dd = date.toLocaleString('en-US', { day: "2-digit", timeZone: tzone });
+            let yyyy = date.toLocaleString('en-US', { year: "numeric", timeZone: tzone })
+            let DAY = date.toLocaleString('en-US', { weekday: "long" })
+            h = h ? h : (h + 12);
+            m = m < 10 ? '0' + m : m;
+            sec = sec < 10 ? '0' + sec : sec;
+            document.getElementById("day").innerText = DAY;
+            document.getElementById("clock").innerText = h.slice(0,2) + " : " + m;
+            document.getElementById("unit").innerText = h.slice(-2);
+            document.getElementById("second").innerText = sec;
+            document.getElementById("date").innerText = mm + " " + dd + "  " + yyyy;
+        }
+    </script>
+</body>
+
+</html>
